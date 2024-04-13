@@ -1,8 +1,4 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-
-//TODO change colors
 
 /// Class that contains colors of light theme.
 class LightColors {
@@ -11,12 +7,6 @@ class LightColors {
 
   /// Color to be used on primary color.
   static const Color onPrimaryColor = Color(0xFFFFFFFF);
-
-  /// Secondary color.
-  static const Color secondaryColor = Color(0xFFFAA336);
-
-  /// Color to be used on secondary color.
-  static const Color onSecondaryColor = Color(0xFFFFFFFF);
 
   /// Scaffold background color of the light theme.
   static const Color backgroundColor = Color(0xFFF1F2F6);

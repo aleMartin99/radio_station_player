@@ -41,8 +41,6 @@ class AppThemes {
       colorScheme: ColorScheme.fromSwatch().copyWith(
         primary: LightColors.primaryColor,
         onPrimary: LightColors.onPrimaryColor,
-        secondary: LightColors.secondaryColor,
-        onSecondary: LightColors.onSecondaryColor,
         background: LightColors.backgroundColor,
         onBackground: LightColors.onBackgroundColor,
         shadow: LightColors.shadowColor,

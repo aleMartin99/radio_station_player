@@ -1,16 +1,11 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:radio_station_player/domain/entities/radio_station.dart';
-import 'package:radio_station_player/presentation/player_screen/components/player/widgets/soft_button.dart';
-import 'package:radio_station_player/presentation/player_screen/components/player/widgets/radio_circle_container.dart';
-import 'package:radio_station_player/presentation/player_screen/components/player/widgets/radio_controllers.dart';
-import 'package:radio_station_player/presentation/player_screen/components/player/widgets/radio_title.dart';
+import 'package:radio_station_player/presentation/player_screen/components/player/player_exports.dart';
+
 import 'package:radio_station_player/presentation/player_screen/player_cubit/player_cubit.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -44,6 +39,7 @@ class _PlayerBodyState extends State<PlayerBody> with TickerProviderStateMixin {
     await context.read<PlayerCubit>().initPlayer(widget.radioStation);
   }
 
+//TODO check dispose method
   Future<void> disposePlayer() async {
     await context.read<PlayerCubit>().disposePlayer();
   }

@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:radio_station_player/presentation/player_screen/components/player/widgets/soft_button.dart';
+import 'package:radio_station_player/presentation/player_screen/components/player/soft_button.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 /// RadioStationCircle container class

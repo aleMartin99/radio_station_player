@@ -28,14 +28,12 @@ class RadioStationBloc extends Bloc<RadioStationEvent, RadioStationState>
         final popularMovies =
             (responseGetPopularMovies as Right).value as List<RadioStation>?;
 
-        if (!isClosed) {
-          emit(
-            state.copyWith(
-              status: RadioStationStatus.success,
-              radioStationsList: popularMovies,
-            ),
-          );
-        }
+        secureEmit(
+          state.copyWith(
+            status: RadioStationStatus.success,
+            radioStationsList: popularMovies,
+          ),
+        );
       } else {
         final failure = (responseGetPopularMovies as Left).value as Failure;
         secureEmit(

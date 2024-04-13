@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:radio_station_player/presentation/player_screen/components/player/widgets/soft_button.dart';
+import 'package:radio_station_player/presentation/player_screen/components/player/soft_button.dart';
 import 'package:radio_station_player/presentation/player_screen/player_cubit/player_cubit.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -36,9 +36,7 @@ class RadioStationsControllers extends StatelessWidget {
                     width: 40,
                     child: GestureDetector(
                       onTap: () async {
-                        await playerState.player!.setVolume(
-                          playerState.player!.volume.value - 0.2,
-                        );
+                        await context.read<PlayerCubit>().volumeDown();
                       },
                       child: Icon(
                         CupertinoIcons.volume_down,
@@ -63,11 +61,8 @@ class RadioStationsControllers extends StatelessWidget {
                               return GestureDetector(
                                 onTap: () async {
                                   try {
-                                    //TODO change play or pause method
                                     await context
                                         .read<PlayerCubit>()
-                                        .state
-                                        .player!
                                         .playOrPause();
                                   } catch (t) {
                                     if (kDebugMode) {
@@ -75,6 +70,7 @@ class RadioStationsControllers extends StatelessWidget {
                                     }
                                   }
                                 },
+                                //TODO poner el cargando si esta cargando el cubit
                                 child: isBuffering
                                     ? const CupertinoActivityIndicator()
                                     : isPlaying
@@ -94,17 +90,13 @@ class RadioStationsControllers extends StatelessWidget {
                     },
                   ),
 
-                  //TODO add bloc to play player
-
                   Container(
                     color: Colors.transparent,
                     height: 40,
                     width: 40,
                     child: GestureDetector(
                       onTap: () async {
-                        await playerState.player!.setVolume(
-                          playerState.player!.volume.value + 0.2,
-                        );
+                        await context.read<PlayerCubit>().volumeUp();
                       },
                       child: Icon(
                         CupertinoIcons.volume_up,
