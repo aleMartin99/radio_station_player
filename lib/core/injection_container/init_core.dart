@@ -6,6 +6,7 @@ import 'package:radio_station_player/data/datasources/datasource_exports.dart';
 import 'package:radio_station_player/data/repositories/radio_repository.dart';
 import 'package:radio_station_player/domain/repositories/iradio_repository.dart';
 import 'package:radio_station_player/domain/usecases/get_radio_stations/get_radio_stations_usecase.dart';
+import 'package:radio_station_player/presentation/home_screen/filter_bloc/filter_bloc.dart';
 import 'package:radio_station_player/presentation/home_screen/radio_station_bloc/radio_station_bloc.dart';
 import 'package:radio_station_player/presentation/player_screen/player_cubit/player_cubit.dart';
 
@@ -34,5 +35,8 @@ FutureOr<void> initCore(GetIt sl) async {
     )
     ..registerLazySingleton<PlayerCubit>(
       () => PlayerCubit(),
+    )
+    ..registerLazySingleton<FilterBloc>(
+      () => FilterBloc(),
     );
 }

@@ -33,7 +33,7 @@ class RadioStationWidget extends StatelessWidget {
             child: CachedNetworkImage(
               filterQuality: FilterQuality.none,
               placeholder: (context, url) => const CupertinoActivityIndicator(),
-              errorWidget: (context, url, error) => const Icon(Icons.error),
+              errorWidget: (context, url, error) => const Icon(Icons.radio),
               imageUrl: radioStation.image ?? '',
               fit: BoxFit.cover,
               width: 30.sp,
@@ -51,7 +51,7 @@ class RadioStationWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                radioStation.name ?? 'Radio station name',
+                radioStation.name!,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
                 style: const TextStyle(
@@ -60,7 +60,7 @@ class RadioStationWidget extends StatelessWidget {
                 ),
               ),
               Text(
-                radioStation.country ?? 'Radio station country',
+                radioStation.country!,
                 maxLines: 1,
                 style: TextStyle(
                   color: Theme.of(context).textTheme.titleMedium!.color,

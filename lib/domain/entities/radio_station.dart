@@ -1,9 +1,7 @@
+// ignore: lines_longer_than_80_chars
 // ignore_for_file: collection_methods_unrelated_type, inference_failure_on_untyped_parameter
 
-import 'package:radio_station_player/core/services/preferences_helper.dart';
 import 'package:radio_station_player/data/models/radio_station_model.dart';
-
-final _prefs = UtilPreferences();
 
 /// RadioStation entity
 class RadioStation {
@@ -22,16 +20,21 @@ class RadioStation {
   /// Radio station model fromModel method
   factory RadioStation.fromModel(RadioStationModel radioStationModel) {
     return RadioStation(
-        id: radioStationModel.stationuuid,
-        name: radioStationModel.name,
-        url: radioStationModel.url,
-        image: radioStationModel.favicon,
-        country: radioStationModel.country,
-        countryCode: radioStationModel.countrycode,
-        votes: radioStationModel.votes,
+      id: radioStationModel.stationuuid,
+      name: (radioStationModel.name!.isNotEmpty)
+          ? radioStationModel.name
+          : 'Radio station name',
+      url: radioStationModel.url,
+      image: radioStationModel.favicon,
+      country: (radioStationModel.country!.isNotEmpty)
+          ? radioStationModel.country
+          : 'Radio station country',
+      countryCode: radioStationModel.countrycode,
+      votes: radioStationModel.votes,
 
-        /// By default is false because there is no info about it in the api
-        isFavorite: false);
+      /// By default is false because there is no info about it in the api
+      isFavorite: false,
+    );
   }
 
   /// Radio station id

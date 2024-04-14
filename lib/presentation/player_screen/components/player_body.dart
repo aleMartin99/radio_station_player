@@ -90,14 +90,14 @@ class _PlayerBodyState extends State<PlayerBody> with TickerProviderStateMixin {
                               radius: 25,
                               padding: 10,
                               icon: GestureDetector(
-                                //TODO implement add to favorite
                                 onTap: () async {
                                   context.read<RadioStationBloc>().add(
                                         OnToggleFavoriteRadioStationEvent(
-                                            radioStationId:
-                                                widget.radioStation.id!,
-                                            isFavorite: !widget
-                                                .radioStation.isFavorite),
+                                          radioStationId:
+                                              widget.radioStation.id!,
+                                          isFavorite:
+                                              !widget.radioStation.isFavorite,
+                                        ),
                                       );
                                 },
 

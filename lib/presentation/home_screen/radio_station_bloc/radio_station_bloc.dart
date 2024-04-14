@@ -1,4 +1,4 @@
-// ignore_for_file: collection_methods_unrelated_type, inference_failure_on_untyped_parameter
+// ignore_for_file: collection_methods_unrelated_type, inference_failure_on_untyped_parameter, lines_longer_than_80_chars
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

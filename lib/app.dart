@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:radio_station_player/core/router/router_exports.dart';
 import 'package:radio_station_player/core/theme/theme_exports.dart';
 import 'package:radio_station_player/main.dart';
+import 'package:radio_station_player/presentation/home_screen/filter_bloc/filter_bloc.dart';
 import 'package:radio_station_player/presentation/home_screen/radio_station_bloc/radio_station_bloc.dart';
 import 'package:radio_station_player/presentation/player_screen/player_cubit/player_cubit.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -35,6 +36,9 @@ class _AppState extends State<App> with WidgetsBindingObserver {
             ),
             BlocProvider(
               create: (context) => sl<PlayerCubit>(),
+            ),
+            BlocProvider(
+              create: (context) => sl<FilterBloc>(),
             ),
           ],
           child: MaterialApp(

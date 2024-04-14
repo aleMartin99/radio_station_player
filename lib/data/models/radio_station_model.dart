@@ -24,12 +24,12 @@ class RadioStationModel {
     return RadioStationModel(
       stationuuid: data['stationuuid'] as String?,
       //Convert the string and return name without left spaces
-      name: (data['name'] as String?)?.trimLeft(),
-      url: data['url'] as String?,
-      favicon: data['favicon'] as String?,
-      country: data['country'] as String?,
-      countrycode: data['countrycode'] as String?,
-      votes: data['votes'] as int?,
+      name: (data['name'] as String?)?.trimLeft() ?? 'Radio station name',
+      url: data['url'] as String? ?? '',
+      favicon: data['favicon'] as String? ?? '',
+      country: data['country'] as String? ?? 'Radio station country',
+      countrycode: data['countrycode'] as String? ?? '',
+      votes: data['votes'] as int? ?? 0,
     );
   }
 

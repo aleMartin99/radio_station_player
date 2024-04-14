@@ -60,7 +60,7 @@ class RadioStationCircleContainer extends StatelessWidget {
                     placeholder: (context, url) =>
                         const CupertinoActivityIndicator(),
                     errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
+                        const Icon(Icons.radio),
                     imageUrl: image,
                     fit: BoxFit.cover,
                     width: 40.sp,
