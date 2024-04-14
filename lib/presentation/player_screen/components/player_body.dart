@@ -81,29 +81,34 @@ class _PlayerBodyState extends State<PlayerBody> with TickerProviderStateMixin {
                       ),
 
                       ///Amount of favorites votes
-                      Tooltip(
-                        message: 'Votes: ${widget.radioStation.votes}',
-                        child: CircularSoftButton(
-                          radius: 25,
-                          padding: 10,
-                          icon: GestureDetector(
-                            onTap: () async {
-                              context.read<RadioStationBloc>().add(
-                                    OnToggleFavoriteRadioStationEvent(
-                                      radioStationId: widget.radioStation.id!,
-                                      isFavorite:
-                                          !widget.radioStation.isFavorite,
-                                    ),
-                                  );
-                            },
-                            child: Icon(
-                              widget.radioStation.isFavorite
-                                  ? Icons.favorite
-                                  : Icons.favorite_border,
-                              color: Theme.of(context).colorScheme.primary,
+                      BlocBuilder<RadioStationBloc, RadioStationState>(
+                        builder: (context, radioStationState) {
+                          return Tooltip(
+                            message: 'Votes: ${widget.radioStation.votes}',
+                            child: CircularSoftButton(
+                              radius: 25,
+                              padding: 10,
+                              icon: GestureDetector(
+                                onTap: () async {
+                                  context.read<RadioStationBloc>().add(
+                                        OnToggleFavoriteRadioStationEvent(
+                                          radioStationId:
+                                              widget.radioStation.id!,
+                                          isFavorite:
+                                              !widget.radioStation.isFavorite,
+                                        ),
+                                      );
+                                },
+                                child: Icon(
+                                  widget.radioStation.isFavorite
+                                      ? Icons.favorite
+                                      : Icons.favorite_border,
+                                  color: Theme.of(context).colorScheme.primary,
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
+                          );
+                        },
                       ),
                     ],
                   ),
