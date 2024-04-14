@@ -1,9 +1,11 @@
-// ignore_for_file: use_build_context_synchronously
+// ignore: lines_longer_than_80_chars
+// ignore_for_file: use_build_context_synchronously, avoid_dynamic_calls, prefer_typing_uninitialized_variables
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:radio_station_player/domain/entities/radio_station.dart';
+import 'package:radio_station_player/presentation/home_screen/radio_station_bloc/radio_station_bloc.dart';
 import 'package:radio_station_player/presentation/player_screen/components/player/player_exports.dart';
 
 import 'package:radio_station_player/presentation/player_screen/player_cubit/player_cubit.dart';
@@ -21,27 +23,27 @@ class PlayerBody extends StatefulWidget {
 }
 
 class _PlayerBodyState extends State<PlayerBody> with TickerProviderStateMixin {
-//TODO check dispose method
+  late final playerContextToDispose;
 
-  // @override
-  // void dispose() {
-  //   disposePlayer();
-  //   super.dispose();
-  // }
+  @override
+  void dispose() {
+    // Dispose of the player with the old context
+    playerContextToDispose.state.player!.dispose();
+    super.dispose();
+  }
 
   @override
   void initState() {
     initPlayer();
+
     super.initState();
   }
 
   Future<void> initPlayer() async {
     await context.read<PlayerCubit>().initPlayer(widget.radioStation);
-  }
 
-//TODO check dispose method
-  Future<void> disposePlayer() async {
-    await context.read<PlayerCubit>().disposePlayer();
+    // Storing a reference to the context of the PlayerCubit
+    playerContextToDispose = context.read<PlayerCubit>();
   }
 
   @override
@@ -100,9 +102,13 @@ class _PlayerBodyState extends State<PlayerBody> with TickerProviderStateMixin {
                       radius: 25,
                       padding: 10,
                       icon: GestureDetector(
-                        //TODO implement share
-                        onTap: () async {},
-
+                        onTap: () {
+                          context.read<RadioStationBloc>().add(
+                                OnShareRadioStationEvent(
+                                  radioStation: widget.radioStation,
+                                ),
+                              );
+                        },
                         child: Icon(
                           CupertinoIcons.share,
                           size: 20.sp,

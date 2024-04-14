@@ -1,5 +1,5 @@
 // ignore: lines_longer_than_80_chars
-// ignore_for_file: use_build_context_synchronously, no_leading_underscores_for_local_identifiers
+// ignore_for_file: use_build_context_synchronously, no_leading_underscores_for_local_identifiers, inference_failure_on_instance_creation
 
 import 'dart:async';
 

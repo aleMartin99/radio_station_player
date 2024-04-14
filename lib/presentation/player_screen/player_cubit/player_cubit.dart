@@ -91,31 +91,10 @@ class PlayerCubit extends Cubit<PlayerState> with BaseCubit {
     }
   }
 
-  /// volumeDown method
+  /// playOrPause method
   Future<void> playOrPause() async {
     try {
       await _player.playOrPause();
-    } on Exception catch (e) {
-      secureEmit(
-        state.copyWith(
-          failure: UnexpectedFailure(message: e.toString()),
-          status: PlayerStatus.failure,
-        ),
-      );
-    }
-  }
-
-  /// Dispose the player
-  Future<void> disposePlayer() async {
-    try {
-      emit(state.copyWith(status: PlayerStatus.loading));
-
-      await _player.dispose();
-      secureEmit(
-        state.copyWith(
-          status: PlayerStatus.disposed,
-        ),
-      );
     } on Exception catch (e) {
       secureEmit(
         state.copyWith(

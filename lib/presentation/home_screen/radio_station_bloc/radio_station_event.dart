@@ -11,3 +11,15 @@ class OnLoadRadioStationsEvent extends RadioStationEvent {
   @override
   List<Object> get props => [];
 }
+
+///OnLoadRadioStationsEvent class
+class OnShareRadioStationEvent extends RadioStationEvent {
+  ///
+  OnShareRadioStationEvent({required this.radioStation});
+
+  /// Radio station to share
+  final RadioStation radioStation;
+
+  @override
+  List<Object> get props => [radioStation];
+}

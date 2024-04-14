@@ -1,10 +1,10 @@
 /// Helper class to manage url
 class ApiHelper {
-  //TODO change apihelper urls
-  ///Base url
+  /// Base url
   static String baseUrl = 'http://de1.api.radio-browser.info/json/';
 
-//TODO remove stations limit after lazy loading
-  ///Url to request stations
-  static String getStationsUrl = 'stations?limit=10';
+  /// Url to request stations
+  /// For mvp purposes only fetching 20 radio stations, normally this will be
+  /// implemented with pagination
+  static String getStationsUrl = 'stations?limit=20';
 }

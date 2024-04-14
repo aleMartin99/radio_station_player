@@ -5,7 +5,7 @@ import 'package:radio_station_player/presentation/player_screen/components/playe
 /// Player screen
 class PlayerScreen extends StatelessWidget {
   ///
-  const PlayerScreen({super.key, required this.radioStation});
+  const PlayerScreen({required this.radioStation, super.key});
 
   ///
   final RadioStation radioStation;

@@ -5,4 +5,5 @@ enum RadioStationStatus {
   loading,
   success,
   failure,
+  sharedRadioStation,
 }
