@@ -23,6 +23,7 @@ dependencies:
   marquee: ^2.2.3
   responsive_sizer:  ^3.2.0
   share_plus: ^8.0.3
+  shared_preferences: ^2.2.3
 
 
 dev_dependencies:

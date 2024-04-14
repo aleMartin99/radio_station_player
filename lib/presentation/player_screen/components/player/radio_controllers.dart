@@ -80,9 +80,6 @@ class RadioStationsControllers extends StatelessWidget {
                                         : Icon(
                                             Icons.play_arrow,
                                             size: 28.sp,
-                                            // color: Theme.of(context)
-                                            //     .colorScheme
-                                            //     .primary,
                                           ),
                               );
                             },

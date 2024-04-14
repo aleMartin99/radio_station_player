@@ -1,5 +1,5 @@
 // ignore: lines_longer_than_80_chars
-// ignore_for_file: use_build_context_synchronously, avoid_dynamic_calls, prefer_typing_uninitialized_variables
+// ignore_for_file: use_build_context_synchronously, avoid_dynamic_calls, prefer_typing_uninitialized_variables, inference_failure_on_uninitialized_variable, type_annotate_public_apis
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +23,7 @@ class PlayerBody extends StatefulWidget {
 }
 
 class _PlayerBodyState extends State<PlayerBody> with TickerProviderStateMixin {
+  ///
   late final playerContextToDispose;
 
   @override
@@ -80,18 +81,37 @@ class _PlayerBodyState extends State<PlayerBody> with TickerProviderStateMixin {
                       ),
 
                       ///Amount of favorites votes
-                      Tooltip(
-                        message: 'Votes: ${widget.radioStation.votes}',
-                        child: CircularSoftButton(
-                          radius: 25,
-                          padding: 10,
-                          icon: GestureDetector(
-                            //TODO implement add to favorite
-                            onTap: () async {},
+                      BlocBuilder<RadioStationBloc, RadioStationState>(
+                        builder: (context, state) {
+                          return Tooltip(
+                            //TODO add votes +1 if fav
+                            message: 'Votes: ${widget.radioStation.votes}',
+                            child: CircularSoftButton(
+                              radius: 25,
+                              padding: 10,
+                              icon: GestureDetector(
+                                //TODO implement add to favorite
+                                onTap: () async {
+                                  context.read<RadioStationBloc>().add(
+                                        OnToggleFavoriteRadioStationEvent(
+                                            radioStationId:
+                                                widget.radioStation.id!,
+                                            isFavorite: !widget
+                                                .radioStation.isFavorite),
+                                      );
+                                },
 
-                            child: const Icon(Icons.favorite),
-                          ),
-                        ),
+                                //TODO condicionar icono en dependencia de si es favorito o no
+                                child: Icon(
+                                  widget.radioStation.isFavorite
+                                      ? Icons.favorite
+                                      : Icons.favorite_border,
+                                  color: Theme.of(context).colorScheme.primary,
+                                ),
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),

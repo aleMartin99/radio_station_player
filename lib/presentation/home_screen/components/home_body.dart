@@ -34,13 +34,19 @@ class _HomeBodyState extends State<HomeBody> {
             physics: const BouncingScrollPhysics(),
             child: BlocBuilder<RadioStationBloc, RadioStationState>(
               builder: (context, radioStationState) {
-                return radioStationState.status == RadioStationStatus.loading
+                return radioStationState.status == RadioStationStatus.loading ||
+                        radioStationState.status ==
+                            RadioStationStatus.loadingToggleFavorite
                     ? SizedBox(
                         height: 90.h,
                         child:
                             const Center(child: CupertinoActivityIndicator()),
                       )
-                    : radioStationState.status == RadioStationStatus.success
+                    : radioStationState.status == RadioStationStatus.success ||
+                            radioStationState.status ==
+                                RadioStationStatus.isFavRadioStation ||
+                            radioStationState.status ==
+                                RadioStationStatus.isNotFavRadioStation
                         ? Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [

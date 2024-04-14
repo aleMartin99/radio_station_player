@@ -23,3 +23,21 @@ class OnShareRadioStationEvent extends RadioStationEvent {
   @override
   List<Object> get props => [radioStation];
 }
+
+///OnToggleFavoriteRadioStationEvent class
+class OnToggleFavoriteRadioStationEvent extends RadioStationEvent {
+  ///
+  OnToggleFavoriteRadioStationEvent({
+    required this.radioStationId,
+    required this.isFavorite,
+  });
+
+  /// Radio station id
+  final String radioStationId;
+
+  /// Favorite state to toggle
+  final bool isFavorite;
+
+  @override
+  List<Object> get props => [radioStationId, isFavorite];
+}
