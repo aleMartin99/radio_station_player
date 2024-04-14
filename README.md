@@ -16,10 +16,13 @@ To set up the environment for the radio_station_player project, please follow th
 Once the app is up and running, you can perform the following actions:
 
 1. Open the app and explore the collection of radio stations.
-1.1. Filter the radio stations by favorites.
+
+   1.1. Filter the radio stations by favorites.
 
 2. Select a radio station to navigate to the player screen, where you can play the selected radio station.
-  2.1. Mark the radio station as favorite.
-  2.2. Share the radio station.
+ 
+   2.1. Mark the radio station as favorite.
+  
+   2.2. Share the radio station.
 
 Feel free to explore and enjoy the radio_station_player app!
