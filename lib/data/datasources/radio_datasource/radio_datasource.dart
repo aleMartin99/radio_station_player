@@ -28,9 +28,7 @@ class RadioDatasource implements IRadioDatasource {
               )
               .toList(),
         );
-      }
-      //TODO pasar a clase o metodo diferente ronny style
-      else {
+      } else {
         return left(const ServerFailure());
       }
     } catch (e) {

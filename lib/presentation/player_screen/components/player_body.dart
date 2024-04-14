@@ -81,37 +81,29 @@ class _PlayerBodyState extends State<PlayerBody> with TickerProviderStateMixin {
                       ),
 
                       ///Amount of favorites votes
-                      BlocBuilder<RadioStationBloc, RadioStationState>(
-                        builder: (context, state) {
-                          return Tooltip(
-                            //TODO add votes +1 if fav
-                            message: 'Votes: ${widget.radioStation.votes}',
-                            child: CircularSoftButton(
-                              radius: 25,
-                              padding: 10,
-                              icon: GestureDetector(
-                                onTap: () async {
-                                  context.read<RadioStationBloc>().add(
-                                        OnToggleFavoriteRadioStationEvent(
-                                          radioStationId:
-                                              widget.radioStation.id!,
-                                          isFavorite:
-                                              !widget.radioStation.isFavorite,
-                                        ),
-                                      );
-                                },
-
-                                //TODO condicionar icono en dependencia de si es favorito o no
-                                child: Icon(
-                                  widget.radioStation.isFavorite
-                                      ? Icons.favorite
-                                      : Icons.favorite_border,
-                                  color: Theme.of(context).colorScheme.primary,
-                                ),
-                              ),
+                      Tooltip(
+                        message: 'Votes: ${widget.radioStation.votes}',
+                        child: CircularSoftButton(
+                          radius: 25,
+                          padding: 10,
+                          icon: GestureDetector(
+                            onTap: () async {
+                              context.read<RadioStationBloc>().add(
+                                    OnToggleFavoriteRadioStationEvent(
+                                      radioStationId: widget.radioStation.id!,
+                                      isFavorite:
+                                          !widget.radioStation.isFavorite,
+                                    ),
+                                  );
+                            },
+                            child: Icon(
+                              widget.radioStation.isFavorite
+                                  ? Icons.favorite
+                                  : Icons.favorite_border,
+                              color: Theme.of(context).colorScheme.primary,
                             ),
-                          );
-                        },
+                          ),
+                        ),
                       ),
                     ],
                   ),
